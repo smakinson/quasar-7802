@@ -61,7 +61,7 @@ It will submit even though the rules should fail.
 If instead a field is focused first, then the rules are evaluated. They also evaluate if you click sign in
 again after the first fake login.
 
-Line 92 is the work around I had used in my other project, but it does not seem to help here.
+Line 92 is the work around I had used in my other project, but I don't think that should be required.
 
 autofocus on a field is also a work around, but in my projects case I had 2 forms side by side and since
 I could not autofocus both it was not an option and also it should not be a requirement.
@@ -89,8 +89,8 @@ export default {
       })
     },
     async handleSubmit () {
-      // const formValid = await this.$refs.authForm.validate() // work around I had used in my project, but it doesnt seem to help in this repo.
-      const formValid = true
+      // await this.$refs.authForm.focus() // work around I had used in my project
+      const formValid = await this.$refs.authForm.validate()
 
       if (formValid) {
         Loading.show()
